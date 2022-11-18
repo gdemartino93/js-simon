@@ -37,15 +37,16 @@ function(){
             const TASTOCONFERMA = document.getElementById("conferma");
             TASTOCONFERMA.addEventListener("click",
             function() {
-                
                 let numeroUno = parseInt(document.getElementById("nr-1").value);
                 let numeroDue = parseInt(document.getElementById("nr-2").value);
                 let numeroTre = parseInt(document.getElementById("nr-3").value);
                 let numeroQuattro = parseInt(document.getElementById("nr-4").value);
                 let numeroCinque = parseInt(document.getElementById("nr-5").value);
-                arrUtente=[numeroUno,numeroDue,numeroTre,numeroQuattro,numeroCinque]
+                let arrUtente=[numeroUno,numeroDue,numeroTre,numeroQuattro,numeroCinque]
                 console.log(arrUtente);
+                let numeriComune = ARRAYNUMERI.filter(x => arrUtente.includes(x));
                 
+                alert(`hai indovinato ${numeriComune.length}`)
             })
         }
         else{
