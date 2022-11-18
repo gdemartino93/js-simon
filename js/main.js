@@ -10,5 +10,31 @@
 // *fate sempre una cosa alla volta (in quel caso se partite con i prompt potrebbe incasinarsi nelle tempistiche di aggiornamento dom e visualizzazione del prompt stesso [soprattutto in chrome]).
 // Buon divertimento e buon we! :videogioco:
 
-const ARRAYNUMERI=generaArrayNrRandom(5,1,100)
-console.log(ARRAYNUMERI);
+
+const BTNPLAY=document.getElementById("play");
+const GIOCO = document.getElementById("gioco")
+// label dei 5 numeri
+BTNPLAY.addEventListener("click", 
+function(){
+    let ARRAYNUMERI=generaArrayNrRandom(5,1,100);
+    console.log(ARRAYNUMERI);
+    GIOCO.innerHTML = "";
+    for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
+        let box= document.createElement("div");
+        GIOCO.append(box);
+        box.classList.add("col-2");
+        box.classList.add("boxNr")
+        box.innerHTML += `${ARRAYNUMERI[i]}`
+    }
+    let tempo = 3;
+    let timer = setInterval(function(){
+
+        console.log(tempo);
+        if (tempo === 0){
+            clearInterval(timer)
+        }
+        else{
+            tempo--
+        }
+    }, 1000)
+})
