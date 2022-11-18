@@ -33,11 +33,19 @@ function(){
                         </div>
                         `
             }
-            DIVTASTOCONFERME.innerHTML+=`<br> <button type="button" class="btn btn-success" id="conferma">Conferma</button>`
+            DIVTASTOCONFERME.innerHTML+=`<button type="button" class="btn btn-success" id="conferma">Conferma</button>`
             const TASTOCONFERMA = document.getElementById("conferma");
             TASTOCONFERMA.addEventListener("click",
             function() {
-                alert("asdasd")
+                
+                let numeroUno = parseInt(document.getElementById("nr-1").value);
+                let numeroDue = parseInt(document.getElementById("nr-2").value);
+                let numeroTre = parseInt(document.getElementById("nr-3").value);
+                let numeroQuattro = parseInt(document.getElementById("nr-4").value);
+                let numeroCinque = parseInt(document.getElementById("nr-5").value);
+                arrUtente=[numeroUno,numeroDue,numeroTre,numeroQuattro,numeroCinque]
+                console.log(arrUtente);
+                
             })
         }
         else{
