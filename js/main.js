@@ -28,8 +28,7 @@ function(){
     }
     let tempo = 3;
     let timer = setInterval(function(){
-
-        console.log(tempo);
+    document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
             clearInterval(timer)
         }
@@ -37,4 +36,5 @@ function(){
             tempo--
         }
     }, 1000)
+    
 })
