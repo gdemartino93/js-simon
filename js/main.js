@@ -1,24 +1,14 @@
-
-// Visualizzare in pagina 5 numeri casuali.
-// Da lì parte un timer di 30 secondi.
-// Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente.
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-// Consigli :
-// * Pensate prima in italiano.
-// * Dividete in piccoli problemi la consegna.
-// * Individuate gli elementi di cui avete bisogno per realizzare il programma.
-// *fate sempre una cosa alla volta (in quel caso se partite con i prompt potrebbe incasinarsi nelle tempistiche di aggiornamento dom e visualizzazione del prompt stesso [soprattutto in chrome]).
-// Buon divertimento e buon we! :videogioco:
-
-
 const BTNPLAY=document.getElementById("play");
-const GIOCO = document.getElementById("gioco")
+const GIOCO = document.getElementById("gioco");
+const RISPOSTE = document.getElementById("risposte");
+const DIVTASTOCONFERME = document.getElementById("tastoconferma")
 // label dei 5 numeri
 BTNPLAY.addEventListener("click", 
 function(){
     let ARRAYNUMERI=generaArrayNrRandom(5,1,100);
     console.log(ARRAYNUMERI);
     GIOCO.innerHTML = "";
+    RISPOSTE.innerHTML = "";
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
         let box= document.createElement("div");
         GIOCO.append(box);
@@ -26,15 +16,33 @@ function(){
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 3;
+    let tempo = 2;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
             clearInterval(timer)
+            GIOCO.classList.add("d-none")
+            RISPOSTE.classList.remove("d-none")
+            for ( let b = 1 ; b < ARRAYNUMERI.length + 1 ; b++){
+                RISPOSTE.innerHTML+=`
+                        <div class="col-2">
+                            <div class="form-outline">
+                                <input type="number" min="1" max="100" id="nr-${b}" class="form-control" />
+                                <label class="form-label" for="form12">Inserisci il numero ${b}</label>
+                            </div>
+                        </div>
+                        `
+            }
+            DIVTASTOCONFERME.innerHTML+=`<br> <button type="button" class="btn btn-success" id="conferma">Conferma</button>`
+            const TASTOCONFERMA = document.getElementById("conferma");
+            TASTOCONFERMA.addEventListener("click",
+            function() {
+                alert("asdasd")
+            })
         }
         else{
             tempo--
         }
     }, 1000)
-    
 })
+
