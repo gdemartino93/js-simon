@@ -6,19 +6,21 @@ const DIVTASTOCONFERME = document.getElementById("tastoconferma")
 BTNPLAY.addEventListener("click", 
 function(){
     let ARRAYNUMERI=generaArrayNrRandom(5,1,100);
-    console.log(ARRAYNUMERI);
+    console.log("Verrai bannato perchè stai usando trucchi: " + ARRAYNUMERI);
     GIOCO.innerHTML = "";
     RISPOSTE.innerHTML = "";
+    BTNPLAY.classList.add("disabled")
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
         let box= document.createElement("div");
         randomColor(box);
         GIOCO.append(box);
         box.classList.add("col-12");
+        
         box.classList.add(`box-${i}`)
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 5;
+    let tempo = 3;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
@@ -30,7 +32,7 @@ function(){
 
             for ( let b = 1 ; b < ARRAYNUMERI.length + 1 ; b++){
                 RISPOSTE.innerHTML+=`
-                        <div class="col-12">
+                        <div class="col-12 col-lg-2">
                             <div class="form-outline">
                                 <input type="number" min="1" max="100" id="nr-${b}" class="form-control" />
                                 <label class="form-label" for="form12">Inserisci il numero ${b}</label>
