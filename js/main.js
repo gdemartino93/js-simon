@@ -9,7 +9,9 @@ function(){
     console.log("Verrai bannato perchè stai usando trucchi: " + ARRAYNUMERI);
     GIOCO.innerHTML = "";
     RISPOSTE.innerHTML = "";
-    BTNPLAY.classList.add("disabled")
+    BTNPLAY.classList.add("d-none");
+    document.getElementById("istruzioni").classList.add("d-none")
+    document.getElementById("timer-span").classList.remove("d-none")
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
         let box= document.createElement("div");
         randomColor(box);
@@ -20,12 +22,13 @@ function(){
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 2;
+    let tempo = 5;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
             clearInterval(timer)
             GIOCO.classList.add("d-none")
+            BTNPLAY.classList.add("d-none")
             RISPOSTE.classList.remove("d-none")
             document.getElementById("timerOutput").classList.add("d-none")
             // Alla fine del conteggio inserisci la classe none per bloccare animazione
@@ -55,11 +58,16 @@ function(){
                 
                 document.querySelector("main").innerHTML=""
                 let risultatoFinale= document.createElement("div");
-                    randomColor(risultatoFinale);
+                    
                     document.querySelector("main").append(risultatoFinale);
                     risultatoFinale.classList.add("col-12");
                     risultatoFinale.classList.add("outputFinale");
-                    risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
+                    if (numeriComune == 0){
+                        risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri.</span>`
+                    }else{
+                        risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
+                    }
+                    
                 risultatoFinale.innerHTML+=`<button type="button" class="btn btn-danger" id="giocaancora">Gioca ancora</button>`
                 let giocaAncoraBtn = document.getElementById("giocaancora");
                 console.log(giocaAncoraBtn);
