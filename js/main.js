@@ -10,6 +10,8 @@ function(){
     GIOCO.innerHTML = "";
     RISPOSTE.innerHTML = "";
     BTNPLAY.classList.add("d-none");
+    document.getElementById("header-logo").classList.remove("justify-content-between")
+    document.getElementById("header-logo").classList.add("justify-content-center")
     document.getElementById("istruzioni").classList.add("d-none")
     document.getElementById("timer-span").classList.remove("d-none")
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
@@ -17,7 +19,6 @@ function(){
         randomColor(box);
         GIOCO.append(box);
         box.classList.add("col-12");
-        
         box.classList.add(`box-${i}`)
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
@@ -75,9 +76,6 @@ function(){
                  function(){
                     location.reload();
                 })
-
-// DA VEDERE TASTO GIOCA ANCORA
-
             })
         }
         else{
