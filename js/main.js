@@ -11,21 +11,26 @@ function(){
     RISPOSTE.innerHTML = "";
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
         let box= document.createElement("div");
+        randomColor(box);
         GIOCO.append(box);
-        box.classList.add("col-2");
+        box.classList.add("col-12");
+        box.classList.add(`box-${i}`)
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 2;
+    let tempo = 21221;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
             clearInterval(timer)
             GIOCO.classList.add("d-none")
             RISPOSTE.classList.remove("d-none")
+            document.getElementById("timerOutput").classList.add("d-none")
+            // Alla fine del conteggio inserisci la classe none per bloccare animazione
+
             for ( let b = 1 ; b < ARRAYNUMERI.length + 1 ; b++){
                 RISPOSTE.innerHTML+=`
-                        <div class="col-2">
+                        <div class="col-12">
                             <div class="form-outline">
                                 <input type="number" min="1" max="100" id="nr-${b}" class="form-control" />
                                 <label class="form-label" for="form12">Inserisci il numero ${b}</label>
@@ -46,7 +51,8 @@ function(){
                 console.log(arrUtente);
                 let numeriComune = ARRAYNUMERI.filter(x => arrUtente.includes(x));
                 
-                alert(`hai indovinato ${numeriComune.length}`)
+                alert(`hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}`)
+                location.reload()
             })
         }
         else{

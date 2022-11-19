@@ -4,15 +4,33 @@
     box-sizing: border-box;
 }
 
-#gioco{
-}
-
 .boxNr{
-    width: 200px;
-    height: 400px;
+    width: calc(100% / 1 - 40px);
     border: 1px solid black;
+    margin: 5px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3rem;
 }
+.container{
+    background-color: antiquewhite;
+}
+#timerOutput{
+    animation: pulse 2s infinite linear ;
+}
+
+
+
+
+@keyframes pulse {
+    0% {
+      color: #0682f5;
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      color: #0682f5;
+    }
+  }
