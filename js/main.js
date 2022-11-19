@@ -64,7 +64,7 @@ function(){
                     risultatoFinale.classList.add("col-12");
                     risultatoFinale.classList.add("outputFinale");
                     if (numeriComune == 0){
-                        risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri.</span>`
+                        risultatoFinale.innerHTML=`<span class="text-center my-4"> Hai indovinato ${numeriComune.length} numeri.</span>`
                     }else{
                         risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
                     }
