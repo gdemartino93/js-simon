@@ -20,7 +20,7 @@ function(){
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 3;
+    let tempo = 2;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
@@ -53,8 +53,18 @@ function(){
                 console.log(arrUtente);
                 let numeriComune = ARRAYNUMERI.filter(x => arrUtente.includes(x));
                 
-                alert(`hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}`)
-                location.reload()
+                document.querySelector("main").innerHTML=""
+                let risultatoFinale= document.createElement("div");
+                    randomColor(risultatoFinale);
+                    document.querySelector("main").append(risultatoFinale);
+                    risultatoFinale.classList.add("col-12");
+                    risultatoFinale.classList.add("outputFinale");
+                    risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
+                risultatoFinale.innerHTML+=`<button type="button" class="btn btn-danger" id="giocaancora">Gioca ancora</button>`
+                // document.getElementById("giocaancora").addEventListener("click", location.reload())
+
+// DA VEDERE TASTO GIOCA ANCORA
+
             })
         }
         else{

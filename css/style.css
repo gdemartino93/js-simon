@@ -24,6 +24,16 @@ h1{
     animation: pulse 1.5s infinite linear ;
     opacity: 100%;
 }
+.outputFinale{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    align-items: center;
+}
+.outputFinale span{
+    font-weight: bold;
+    font-size: 2rem;
+}
 
 @keyframes pulse {
     0% {
