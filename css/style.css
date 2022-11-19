@@ -29,6 +29,7 @@ h1{
     justify-content: center;
     height: 200px;
     align-items: center;
+    flex-direction: column;
 }
 .outputFinale span{
     font-weight: bold;

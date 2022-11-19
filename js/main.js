@@ -61,7 +61,12 @@ function(){
                     risultatoFinale.classList.add("outputFinale");
                     risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
                 risultatoFinale.innerHTML+=`<button type="button" class="btn btn-danger" id="giocaancora">Gioca ancora</button>`
-                // document.getElementById("giocaancora").addEventListener("click", location.reload())
+                let giocaAncoraBtn = document.getElementById("giocaancora");
+                console.log(giocaAncoraBtn);
+                giocaAncoraBtn.addEventListener("click", 
+                 function(){
+                    location.reload();
+                })
 
 // DA VEDERE TASTO GIOCA ANCORA
 
