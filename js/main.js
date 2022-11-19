@@ -18,7 +18,7 @@ function(){
         box.classList.add("boxNr")
         box.innerHTML += `${ARRAYNUMERI[i]}`
     }
-    let tempo = 21221;
+    let tempo = 5;
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
