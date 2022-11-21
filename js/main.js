@@ -2,18 +2,29 @@ const BTNPLAY=document.getElementById("play");
 const GIOCO = document.getElementById("gioco");
 const RISPOSTE = document.getElementById("risposte");
 const DIVTASTOCONFERME = document.getElementById("tastoconferma")
-// label dei 5 numeri
+
+// tasto play
 BTNPLAY.addEventListener("click", 
 function(){
+
+    // genera un array di 5 numeri casuali da 1 a 100
     let ARRAYNUMERI=generaArrayNrRandom(5,1,100);
+
+    // anticheat
     console.log("Verrai bannato perchè stai usando trucchi: " + ARRAYNUMERI);
+
+    // resetta tutti i campi e nascondi il tasto play dopo aver cliccato sul tasto play
     GIOCO.innerHTML = "";
     RISPOSTE.innerHTML = "";
     BTNPLAY.classList.add("d-none");
+
+    // dopo aver cliccato play centra il logo e rimuovi timer e istruzioni del gioco
     document.getElementById("header-logo").classList.remove("justify-content-between")
     document.getElementById("header-logo").classList.add("justify-content-center")
     document.getElementById("istruzioni").classList.add("d-none")
     document.getElementById("timer-span").classList.remove("d-none")
+
+    // crea tot box in base a quanti sono gli elementi dell array
     for ( let i = 0 ; i < ARRAYNUMERI.length ; i++){
         let box= document.createElement("div");
         randomColor(box);
@@ -27,13 +38,16 @@ function(){
     let timer = setInterval(function(){
     document.getElementById("timerOutput").innerHTML=`${tempo}` 
         if (tempo === 0){
+
+            // allo scandere del tempo nascondi il  la pagina con i numeri e mostra quella con gli input
             clearInterval(timer)
             GIOCO.classList.add("d-none")
-            BTNPLAY.classList.add("d-none")
             RISPOSTE.classList.remove("d-none")
-            document.getElementById("timerOutput").classList.add("d-none")
             // Alla fine del conteggio inserisci la classe none per bloccare animazione
-
+            document.getElementById("timerOutput").classList.add("d-none")
+            
+            
+            // inserisci tot input in base a quanti sono gli elementi dell array
             for ( let b = 1 ; b < ARRAYNUMERI.length + 1 ; b++){
                 RISPOSTE.innerHTML+=`
                         <div class="col-12 col-lg-2">
@@ -48,6 +62,8 @@ function(){
             const TASTOCONFERMA = document.getElementById("conferma");
             TASTOCONFERMA.addEventListener("click",
             function() {
+
+                //prendi i numeri inseriti dall'utente
                 let numeroUno = parseInt(document.getElementById("nr-1").value);
                 let numeroDue = parseInt(document.getElementById("nr-2").value);
                 let numeroTre = parseInt(document.getElementById("nr-3").value);
@@ -55,8 +71,11 @@ function(){
                 let numeroCinque = parseInt(document.getElementById("nr-5").value);
                 let arrUtente=[numeroUno,numeroDue,numeroTre,numeroQuattro,numeroCinque]
                 console.log(arrUtente);
+                
+                // prendi i numeri in comune tra i 2 array
                 let numeriComune = ARRAYNUMERI.filter(x => arrUtente.includes(x));
                 
+                // crea div con risultato
                 document.querySelector("main").innerHTML=""
                 let risultatoFinale= document.createElement("div");
                     
@@ -68,7 +87,7 @@ function(){
                     }else{
                         risultatoFinale.innerHTML=`<span> Hai indovinato ${numeriComune.length} numeri. Questi sono i numeri che hai indovinato ${numeriComune}</span>`
                     }
-                    
+                    //tasto gioca ancora 
                 risultatoFinale.innerHTML+=`<button type="button" class="btn btn-danger" id="giocaancora">Gioca ancora</button>`
                 let giocaAncoraBtn = document.getElementById("giocaancora");
                 console.log(giocaAncoraBtn);
